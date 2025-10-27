@@ -15,7 +15,7 @@
 
 
 body {
-  background-image: url('/BACKGROUND JJK.jpeg');
+  background-image: url('/GenshinBackground.jpg');
   background-size: cover;
   background-position: center top;
   margin: 0;
@@ -141,6 +141,13 @@ body {
   padding-bottom: 0.5rem;
 }
 
+
+.content-box img{
+    display: block;
+  margin: 0 auto 1rem auto; 
+  width: 120px;             
+  height: auto;
+}
 .content-box p {
   font-size: 1rem;
   margin-bottom: 1rem;
