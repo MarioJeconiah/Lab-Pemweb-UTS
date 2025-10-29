@@ -32,7 +32,11 @@ function TierList() {
   const tiers = Object.keys(tierData);
 
   return (
-    <div>
+    <div style={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh", // layar penuh
+      }}>
       <h1>Tier List</h1>
       <div
         style={{

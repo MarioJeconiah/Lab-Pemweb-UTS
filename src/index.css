@@ -85,10 +85,7 @@ nav {
   transition: background-color 0.3s;
 }
 
-.nav-item:hover {
-  background-color: #555;
-  border-radius: 4px;
-}
+
 
 
 .search-form {
@@ -129,6 +126,7 @@ nav {
   padding: 10vh 2%;
   min-height: 80vh;
   padding-top: 10rem;
+  padding-bottom: 10rem;
 }
 
 .content-box {
@@ -160,15 +158,20 @@ nav {
 
 
 .solid-section {
+  display: flex;
   background-color: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
   color: white;
   text-align: center;
-
-  padding: 1rem 2rem;      
-  width: 100vw;              
-  margin-left: calc(50% - 50vw);
+  width: 100vw;               
+  margin-left: calc(50% - 50vw); 
   margin-right: calc(50% - 50vw);
+  padding: 1rem;
+  margin-top: 3rem;
 }
+
+
 
 .solid-section p {
   max-width: 800px;

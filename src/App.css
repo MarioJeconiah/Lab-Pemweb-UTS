@@ -1,42 +1,163 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0;
+/* === Global Styles === */
+body {
+margin: 0;
+padding: 0;
+font-family: 'Poppins', sans-serif;
+background-color: #f9f9f9;
+color: #333;
+background-repeat: no-repeat;
+background-size: cover; 
+background-position: center;
+background-attachment: fixed;
+}
+
+.app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* halaman penuh satu layar */
+}
+
+a {
+text-decoration: none;
+color: inherit;
+}
+
+/* === Navbar === */
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: rgba(0, 0, 0, 0.6);
+padding: 15px 40px;
+}
+
+.nav-left,
+.nav-right {
+display: flex;
+gap: 20px;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+.navbar a {
+  color: #ecf0f1;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #1abc9c;
+}
+
+
+/* === Content Area === */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* ✅ Vertikal tengah */
+  align-items: center;     /* ✅ Horizontal tengah */
   text-align: center;
+  padding: 60px 20px;
+  min-height: 100vh;       /* ✅ Penuhi tinggi layar agar bisa benar-benar center */
+  margin-top: 0;           /* Hapus jarak atas agar pas di tengah */
 }
 
-.logo {
-  height: 6em;
-  padding: 0;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.content-logo {
+width: 250px;
+height: auto;
+margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.content-box h1 {
+font-size: 2.5rem;
+margin: 10px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.content-box p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  line-height: 1.6;
+  text-align: center;      /* pastikan teks rata tengah */
+  margin: 0 auto;          /* pastikan paragraf benar-benar di tengah */
 }
 
-.card {
-  padding: 0;
+
+/* === Responsive Styles === */
+
+/* Tablet (≤1024px) */
+@media (max-width: 1024px) {
+.navbar {
+padding: 15px 25px;
 }
 
-.read-the-docs {
-  color: #888;
+.nav-left, .nav-right {
+gap: 15px;
+}
+
+.content-logo {
+width: 200px;
+}
+
+.content-box h1 {
+font-size: 2rem;
+}
+
+.content-box p {
+font-size: 1rem;
+}
+}
+
+/* Mobile (≤768px) */
+@media (max-width: 768px) {
+.navbar {
+flex-direction: column;
+text-align: center;
+padding: 20px;
+}
+
+.nav-left, .nav-right {
+flex-direction: column;
+gap: 10px;
+align-items: center;
+}
+
+.content-container {
+padding: 40px 15px;
+}
+
+.content-logo {
+width: 150px;
+}
+
+.content-box h1 {
+font-size: 1.8rem;
+}
+
+.content-box p {
+font-size: 0.95rem;
+}
+}
+
+/* Small Mobile (≤480px) */
+@media (max-width: 480px) {
+.navbar {
+padding: 15px;
+}
+
+.nav-left, .nav-right {
+gap: 8px;
+}
+
+.content-logo {
+width: 120px;
+}
+
+.content-box h1 {
+font-size: 1.5rem;
+}
+
+.content-box p {
+font-size: 0.9rem;
+}
 }
