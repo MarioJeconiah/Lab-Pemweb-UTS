@@ -243,7 +243,7 @@ function InteractiveTierList() {
 
 
 // --- 1ST TIERLIST: STATIC TIERLIST (MODIFIED to accept props) ---
-function StaticTierList({ showInteractive, setShowInteractive }) {
+function MetaTierList({ showInteractive, setShowInteractive }) {
   const tierData = {
     S: [
       ALL_CHARACTERS.find(c => c.name === "Furina").url,
@@ -381,18 +381,18 @@ function TierListApp() {
 
   return (
     <div style={{ 
-        backgroundColor: '#1a1a2e', 
+        backgroundColor: 'rgba(0, 0, 0, 0.6)', 
         minHeight: '100vh', 
         padding: '20px', 
         fontFamily: 'sans-serif'
     }}>
       {/* 1. Static TierList Component: Passes state control down */}
-      <StaticTierList 
+      <MetaTierList 
         showInteractive={showInteractive} 
         setShowInteractive={setShowInteractive} 
       />
 
-      <hr style={{ width: '80%', margin: '50px auto', borderColor: 'rgba(255,255,255,0.2)' }} />
+      <hr style={{ width: '80%', margin: '50px auto', borderColor: '#1a1a2e' }} />
 
       {/* 2. Conditional Rendering of the Interactive TierList */}
       {showInteractive && <InteractiveTierList />}
