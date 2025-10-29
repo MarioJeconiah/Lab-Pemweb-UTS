@@ -71,8 +71,6 @@ function InteractiveTierList() {
         padding: "50px 0",
       }}>
       
-      <h2>Interactive Tier List (Click "Add" to build)</h2>
-      
       {/* Scrollable Gallery Modal/Panel */}
       {showGallery && (
         <div style={{
@@ -81,17 +79,20 @@ function InteractiveTierList() {
           left: 0,
           width: '100%',
           height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.9)',
           zIndex: 10,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           padding: '20px',
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
+          backdropFilter: "blur(5px)", 
         }}>
           <div style={{
             color: 'white',
             marginBottom: '20px',
-            fontSize: '1.5rem'
+            fontSize: '1.5rem',
+            fontWeight: 'bold'
+
           }}>
             Add Character to {targetTier} Tier 
             <button 
@@ -109,7 +110,6 @@ function InteractiveTierList() {
             maxWidth: '900px',
             maxHeight: '80%',
             overflowY: 'auto', 
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
             borderRadius: '10px',
           }}>
             {ALL_CHARACTERS.map((char) => (
@@ -188,7 +188,7 @@ function InteractiveTierList() {
                     marginTop: '5px', 
                     padding: '3px 8px', 
                     fontSize: '0.8rem',
-                    backgroundColor: '#1E90FF', 
+                    backgroundColor: '#ffffff4d', 
                     color: 'white', 
                     border: 'none', 
                     borderRadius: '4px',
@@ -223,7 +223,6 @@ function InteractiveTierList() {
                           height: "auto",
                           borderRadius: "10px",
                           objectFit: "cover",
-                          backgroundColor: "rgba(255,255,255,0.2)",
                         }}
                       />
                     ))
@@ -267,91 +266,91 @@ function StaticTierList({ showInteractive, setShowInteractive }) {
 
   return (
     <div style={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "auto", 
-      }}>
-      <h1>Tier List</h1>
-
-      {/* --- BUTTON INSERTED HERE (Using props to control parent state) --- */}
-      <div style={{ textAlign: 'center', marginBottom: '30px', marginTop: '20px' }}>
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      color: "white",
+      padding: "50px 0",
+      fontFamily: "sans-serif",
+    }}>
+      
+      {/* Tombol toggle */}
+      <div style={{ textAlign: 'center', marginBottom: '30px', paddingTop:'2rem' }}>
         <button 
           onClick={() => setShowInteractive(!showInteractive)}
           style={{
-            padding: '15px 30px',
-            fontSize: '1.2rem',
+            padding: '15px 25px',
+            fontSize: '1.1rem',
             fontWeight: 'bold',
-            backgroundColor: showInteractive ? '#FF6347' : '#32CD32',
+            backgroundColor: '#1f2021ff',
             color: 'white',
             border: 'none',
-            borderRadius: '10px',
+            borderRadius: '8px',
             cursor: 'pointer',
-            transition: 'background-color 0.3s',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.3)'
+            transition: 'transform 0.2s, background-color 0.3s',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
           }}
+          onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+          onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
         >
           {showInteractive ? 'Hide My Tier List' : 'Make Your Own Tier List'}
         </button>
       </div>
-      {/* ------------------------------------------------------------- */}
 
+      {/* Struktur tier list */}
       <div
         style={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          paddingTop: "100px",
-          color: "white",
+          gap: "10px",
+          width: "100%",
+          maxWidth: "800px",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px",
-            width: "100%",
-            maxWidth: "800px",
-          }}
-        >
-          {tiers.map((tier) => (
+        {tiers.map((tier) => (
+          <div
+            key={tier}
+            style={{
+              display: "flex",
+              alignItems: "stretch",
+              border: "2px solid rgba(255,255,255,0.3)",
+              borderRadius: "8px",
+              overflow: "hidden",
+              backgroundColor: "rgba(0,0,0,0.5)",
+              boxShadow: "0 2px 10px rgba(0,0,0,0.4)",
+            }}
+          >
+            {/* Tier Label */}
             <div
-              key={tier}
               style={{
+                width: "120px",
                 display: "flex",
-                alignItems: "stretch", // makes children match height
-                border: "2px solid rgba(255,255,255,0.3)",
-                borderRadius: "8px",
-                overflow: "hidden",
-                backgroundColor: "rgba(0,0,0,0.5)",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "rgba(255,255,255,0.15)",
+                fontWeight: "bold",
+                fontSize: "1.5rem",
+                padding: '5px',
               }}
             >
-              {/* Tier Label (auto-stretchs) */}
-              <div
-                style={{
-                  width: "90px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "rgba(255,255,255,0.15)",
-                  fontWeight: "bold",
-                  fontSize: "1.5rem",
-                }}
-              >
-                {tier}
-              </div>
+              {tier}
+            </div>
 
-              {/* Tier Images (expands vertically as needed) */}
-              <div
-                style={{
-                  flex: 1,
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "10px",
-                  padding: "10px",
-                  alignItems: "flex-start", // let images stack naturally
-                }}
-              >
-                {tierData[tier].map((img, index) => (
+            {/* Gambar dalam tier */}
+            <div
+              style={{
+                flex: 1,
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "10px",
+                padding: "10px",
+                alignItems: "flex-start",
+                minHeight: "100px",
+              }}
+            >
+              {tierData[tier].length > 0 ? (
+                tierData[tier].map((img, index) => (
                   <img
                     key={index}
                     src={img}
@@ -361,18 +360,25 @@ function StaticTierList({ showInteractive, setShowInteractive }) {
                       height: "auto",
                       borderRadius: "10px",
                       objectFit: "cover",
-                      backgroundColor: "rgba(255,255,255,0.2)",
+                      transition: "transform 0.2s ease",
                     }}
+                    onMouseEnter={(e) => e.target.style.transform = "scale(1.05)"}
+                    onMouseLeave={(e) => e.target.style.transform = "scale(1)"}
                   />
-                ))}
-              </div>
+                ))
+              ) : (
+                <span style={{ color: 'rgba(255,255,255,0.5)', margin: 'auto' }}>
+                  Empty tier.
+                </span>
+              )}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
+
 
 
 // --- MAIN APP COMPONENT (MANAGES STATE AND RENDERING) ---
@@ -381,7 +387,7 @@ function TierListApp() {
 
   return (
     <div style={{ 
-        backgroundColor: '#1a1a2e', 
+   
         minHeight: '100vh', 
         padding: '20px', 
         fontFamily: 'sans-serif'
@@ -392,7 +398,7 @@ function TierListApp() {
         setShowInteractive={setShowInteractive} 
       />
 
-      <hr style={{ width: '80%', margin: '50px auto', borderColor: 'rgba(255,255,255,0.2)' }} />
+     
 
       {/* 2. Conditional Rendering of the Interactive TierList */}
       {showInteractive && <InteractiveTierList />}
