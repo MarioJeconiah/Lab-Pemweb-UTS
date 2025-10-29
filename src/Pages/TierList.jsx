@@ -1,7 +1,6 @@
 import React from "react";
 
 function TierList() {
-  // You can fill each tier with images (URLs or imported files)
   const tierData = {
     S: [
       "https://sunderarmor.com/GENSHIN/Characters/1/Furina.png",
@@ -13,12 +12,17 @@ function TierList() {
       "https://sunderarmor.com/GENSHIN/Characters/1/Mavuika.png",
       "https://sunderarmor.com/GENSHIN/Characters/1/Mavuika.png",
       "https://sunderarmor.com/GENSHIN/Characters/1/Mavuika.png",
-      
-      
-
     ],
     A: [
       "https://sunderarmor.com/GENSHIN/Characters/1/Arlecchino.png",
+      "https://sunderarmor.com/GENSHIN/Characters/1/Arlecchino.png",
+      "https://sunderarmor.com/GENSHIN/Characters/1/Arlecchino.png",
+      "https://sunderarmor.com/GENSHIN/Characters/1/Arlecchino.png",
+      "https://sunderarmor.com/GENSHIN/Characters/1/Arlecchino.png",
+      "https://sunderarmor.com/GENSHIN/Characters/1/Arlecchino.png",
+      "https://sunderarmor.com/GENSHIN/Characters/1/Arlecchino.png",
+      "https://sunderarmor.com/GENSHIN/Characters/1/Arlecchino.png",
+
     ],
     B: [],
     C: [],
@@ -35,19 +39,16 @@ function TierList() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          paddingTop: "100px", // leaves space for navbar
+          paddingTop: "100px",
           color: "white",
-          
         }}
       >
-        {/* Main Tier List Box */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             gap: "10px",
             width: "100%",
-            height: "auto",
             maxWidth: "800px",
           }}
         >
@@ -56,18 +57,17 @@ function TierList() {
               key={tier}
               style={{
                 display: "flex",
-                alignItems: "stretch",
+                alignItems: "stretch", // makes children match height
                 border: "2px solid rgba(255,255,255,0.3)",
                 borderRadius: "8px",
                 overflow: "hidden",
                 backgroundColor: "rgba(0,0,0,0.5)",
               }}
             >
-              {/* Tier Label */}
+              {/* Tier Label (auto-stretchs) */}
               <div
                 style={{
                   width: "90px",
-                  height: "90px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -79,7 +79,7 @@ function TierList() {
                 {tier}
               </div>
 
-              {/* Tier Images */}
+              {/* Tier Images (expands vertically as needed) */}
               <div
                 style={{
                   flex: 1,
@@ -87,7 +87,7 @@ function TierList() {
                   flexWrap: "wrap",
                   gap: "10px",
                   padding: "10px",
-                  alignItems: "center",
+                  alignItems: "flex-start", // let images stack naturally
                 }}
               >
                 {tierData[tier].map((img, index) => (
