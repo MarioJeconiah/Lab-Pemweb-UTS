@@ -1,10 +1,10 @@
-/* === Navbar === */
+
 .navbar {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 30px;
+  padding: 12px 30px;
   background-color: rgba(0, 0, 0, 0.6);
   position: fixed;
   top: 0;
@@ -27,7 +27,26 @@
   list-style: none;
   align-items: center;
 }
-/* === Login Modal === */
+
+.nav-left a,
+.nav-links a,
+.nav-right a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover, .nav-itemLeft:hover {
+  color: #ffffff4d;
+  transform: scale(1.05);
+}
+
+
 .login-overlay {
   position: fixed;
   top: 0;
@@ -82,7 +101,7 @@
   width: 100%;
   padding: 0.8rem;
   margin-top: 1rem;
-  background: linear-gradient(90deg, #1e90ff, #4facfe);
+  background: linear-gradient(90deg, #111111, #1a1a1a);
   color: white;
   border: none;
   border-radius: 8px;
@@ -93,7 +112,7 @@
 
 .login-button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 12px rgba(79, 172, 254, 0.6);
+  box-shadow: 0 0 12px #1a1a1a;
 }
 
 .close-login {
@@ -107,20 +126,20 @@
 }
 
 .close-login:hover {
-  color: #1e90ff;
+  color:  #333333;
 }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
-/* Forum Section */
+
 .forum-section {
   margin-top: 3rem;
   padding: 2rem;
   border-radius: 12px;
   color: white;
-  background: rgba(0, 0, 0, 0.6); /* sama dengan .content-box */
+  background: rgba(0, 0, 0, 0.6); 
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
@@ -153,7 +172,7 @@
 .forum-post-btn {
   align-self: flex-end;
   padding: 0.6rem 1.2rem;
-  background: #2a82ff;
+  background: #d6d6d6;
   border: none;
   border-radius: 8px;
   color: white;
@@ -163,10 +182,9 @@
 }
 
 .forum-post-btn:hover {
-  background: #1469e3;
+  background: #ffffff;
 }
 
-/* Comments */
 .comment {
   display: flex;
   gap: 1rem;
@@ -181,26 +199,15 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-.vote-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-.vote-btn:hover {
-  color: #2a82ff;
-}
 
 .comment-right {
   flex: 1;
 }
-
 .comment-nickname {
-  color: #2a82ff;
+  color: #fefefe; 
   font-weight: bold;
 }
+
 
 .comment-meta {
   font-size: 0.8rem;
@@ -211,6 +218,12 @@
   margin: 0.5rem 0;
   line-height: 1.5;
 }
+
+.comment-actions {
+  margin-left: 16px;
+  margin-top: 5px;
+}
+
 
 .comment-actions button {
   background: none;
@@ -236,31 +249,25 @@
   transition: all 0.3s ease;
 }
 
-.nav-login:hover {
-  background-color: #ffffff4d;
-  transform: scale(1.05);
-}
 
 
-.nav-left a,
-.nav-links a,
-.nav-right a {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
+.tierlist-btn {
+  background-color: #1a1a1a;
   color: white;
-  text-decoration: none;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  transition: all 0.3s ease;
+  border: 2px solid #555;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
 }
 
-.nav-item:hover, .nav-itemLeft:hover {
-  color: #ffffff4d;
+.tierlist-btn:hover {
+  background-color: #333;
   transform: scale(1.05);
 }
 
-/* === Search Bar === */
 .search-form {
   display: flex;
   flex: 1 1 300px;
@@ -330,7 +337,7 @@
   margin-bottom: 1rem;
 }
 
-/* === Solid Section (transparan blok tengah) === */
+
 .solid-section {
   display: flex;
   background-color: rgba(0, 0, 0, 0.6);
@@ -352,7 +359,7 @@
   line-height: 1.6;
 }
 
-/* === Responsive === */
+
 @media (max-width: 1024px) {
   .content-box h1 { font-size: 1.75rem; }
   .content-box p, .solid-section p { font-size: 0.95rem; }
