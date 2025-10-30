@@ -36,11 +36,27 @@ function Character() {
     },
   ];
 
+  // fungsi warna background berdasarkan elemen
+  const elementColor = (element) => {
+    switch (element) {
+      case "Hydro":
+        return "rgba(0, 162, 255, 0.25)";
+      case "Anemo":
+        return "rgba(144, 238, 144, 0.25)";
+      case "Electro":
+        return "rgba(186, 85, 211, 0.25)";
+      default:
+        return "rgba(0,0,0,0.65)";
+    }
+  };
+
   return (
     <main className="content-container">
       <div className="content-box" style={{ marginTop: "6rem" }}>
-        <h1>Genshin Impact Characters</h1>
-        <p>
+        <h1 style={{ color: "white", textAlign: "center" }}>
+          Genshin Impact Characters
+        </h1>
+        <p style={{ color: "white", textAlign: "center" }}>
           Each character in <strong>Genshin Impact</strong> brings their own story,
           abilities, and elemental powers that shape your adventures in Teyvat.
         </p>
@@ -53,17 +69,34 @@ function Character() {
             marginTop: "2rem",
           }}
         >
-          {characters.map((c) => (
+          {characters.map((c, index) => (
             <div
               key={c.name}
               style={{
                 display: "flex",
                 alignItems: "center",
                 gap: "2rem",
-                backgroundColor: "rgba(0, 0, 0, 0.65)",
+                backgroundColor: elementColor(c.element),
                 borderRadius: "16px",
                 padding: "1.5rem",
                 boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                backdropFilter: "blur(6px)",
+                transform: "translateY(20px)",
+                opacity: 0,
+                animation: `fadeInUp 0.6s ease forwards`,
+                animationDelay: `${index * 0.2}s`,
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.03)";
+                e.currentTarget.style.boxShadow =
+                  "0 0 25px rgba(0, 162, 255, 0.6)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow =
+                  "0 4px 12px rgba(0, 0, 0, 0.4)";
               }}
             >
               <img
@@ -71,7 +104,6 @@ function Character() {
                 alt={c.name}
                 style={{
                   width: "380px",
-                  height: "auto",
                   borderRadius: "12px",
                   objectFit: "cover",
                   flexShrink: 0,
@@ -109,10 +141,11 @@ function Character() {
                       src={c.elementIcon}
                       alt={c.element}
                       style={{
-                        width: "28px",
-                        height: "28px",
+                        width: "26px",
+                        height: "26px",
                         objectFit: "contain",
                         marginTop: "12px",
+                        animation: "spinSlow 12s linear infinite",
                       }}
                     />
                   </div>
@@ -129,6 +162,8 @@ function Character() {
                       textAlign: "center",
                       minWidth: "100px",
                       height: "40px",
+                      color: "#FFD700",
+                      fontWeight: "600",
                     }}
                   >
                     {c.weapon}
@@ -146,6 +181,8 @@ function Character() {
                       textAlign: "center",
                       minWidth: "100px",
                       height: "40px",
+                      color: "#00FFFF",
+                      fontWeight: "600",
                     }}
                   >
                     {c.role}
@@ -160,6 +197,20 @@ function Character() {
           ))}
         </div>
       </div>
+
+      {/* animasi inline */}
+      <style>{`
+        @keyframes fadeInUp {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes spinSlow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </main>
   );
 }
